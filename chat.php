@@ -46,19 +46,20 @@ $messages = $conn->query("SELECT users.username, messages.content, messages.sent
     <title>Чат - <?php echo htmlspecialchars($room_name); ?></title>
 </head>
 <body>
-<h2>Комната: <?php echo htmlspecialchars($room_name); ?></h2>
+<div id="chatPage" class="container">
+    <h2>Комната: <?php echo htmlspecialchars($room_name); ?></h2>
 
-<div style="border: 1px solid #ddd; padding: 10px; max-height: 300px; overflow-y: scroll;">
-    <?php while ($message = $messages->fetch_assoc()): ?>
-        <p><strong><?php echo htmlspecialchars($message['username']); ?>:</strong> <?php echo htmlspecialchars($message['content']); ?> <small>(<?php echo $message['sent_at']; ?>)</small></p>
-    <?php endwhile; ?>
+    <div id="messageContainer" class="messages" style="max-height: 300px; overflow-y: auto;">
+        <?php while ($message = $messages->fetch_assoc()): ?>
+            <p><strong><?php echo htmlspecialchars($message['username']); ?>:</strong> <?php echo htmlspecialchars($message['content']); ?> <small>(<?php echo $message['sent_at']; ?>)</small></p>
+        <?php endwhile; ?>
+    </div>
+
+    <form action="chat.php?room_id=<?php echo $room_id; ?>" method="POST" class="message-form">
+        <input type="text" name="message" placeholder="Введите сообщение" required>
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+    <a href="rooms.php" class="btn">Назад к комнатам</a>
 </div>
-
-<form action="chat.php?room_id=<?php echo $room_id; ?>" method="POST">
-    <input type="text" name="message" placeholder="Введите сообщение" required>
-    <button type="submit">Отправить</button>
-</form>
-
-<a href="rooms.php">Назад к комнатам</a>
 </body>
 </html>

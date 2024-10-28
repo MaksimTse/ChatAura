@@ -120,10 +120,10 @@ while ($friend = $friends->fetch_assoc()) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
+<div id="profilePage" class="container">
     <h2>Редактировать профиль</h2>
 
-    <div class="section">
+    <div id="updateProfile" class="section">
         <h3>Ваше имя пользователя: <?php echo htmlspecialchars($username); ?></h3>
         <form action="profile.php" method="POST">
             <input type="text" name="username" placeholder="Новое имя пользователя" required>
@@ -131,27 +131,15 @@ while ($friend = $friends->fetch_assoc()) {
         </form>
     </div>
 
-    <div class="section">
+    <div id="searchUsers" class="section">
         <h3>Поиск пользователей</h3>
         <form action="profile.php" method="POST">
             <input type="text" name="search_name" placeholder="Имя пользователя для поиска">
             <button type="submit" name="search_user" class="btn">Найти</button>
         </form>
-
-        <?php if (!empty($search_results)): ?>
-            <h3>Результаты поиска</h3>
-            <ul class="user-list">
-                <?php foreach ($search_results as $user): ?>
-                    <li>
-                        <?php echo htmlspecialchars($user['username']); ?>
-                        <a href="profile.php?add_friend=<?php echo $user['id']; ?>" class="btn">Добавить в друзья</a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
     </div>
 
-    <div class="section">
+    <div id="friendRequests" class="section">
         <h3>Запросы в друзья</h3>
         <ul class="user-list">
             <?php while ($request = $friend_requests->fetch_assoc()): ?>
@@ -163,6 +151,7 @@ while ($friend = $friends->fetch_assoc()) {
             <?php endwhile; ?>
         </ul>
     </div>
+</div>
 
     <div class="section">
         <h3>Ваши друзья и их комнаты</h3>

@@ -67,41 +67,42 @@ $available_rooms = $conn->query("SELECT id, name FROM rooms
     </script>
 </head>
 <body>
-<div class="container">
+<div id="roomsPage" class="container">
     <h2>Добро пожаловать, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
-
-    <div style="text-align: center; margin-bottom: 20px;">
+    <div class="button-group">
         <a href="profile.php" class="btn">Профиль</a>
         <form action="logout.php" method="POST" style="display: inline;">
             <button type="submit" class="btn">Выйти</button>
         </form>
     </div>
 
-    <h3>Создать комнату</h3>
-    <form action="rooms.php" method="POST">
-        <input type="text" name="room_name" placeholder="Название комнаты" required>
-        <button type="submit" class="btn">Создать</button>
-    </form>
+    <div id="createRoom" class="section">
+        <h3>Создать комнату</h3>
+        <form action="rooms.php" method="POST">
+            <input type="text" name="room_name" placeholder="Название комнаты" required>
+            <button type="submit" class="btn">Создать</button>
+        </form>
+    </div>
 
     <div class="tabs">
         <div id="tabMyRooms" class="tab active" onclick="showTab('myRooms')">Мои комнаты</div>
         <div id="tabAvailableRooms" class="tab" onclick="showTab('availableRooms')">Доступные комнаты</div>
     </div>
 
-    <div id="myRooms">
+    <div id="myRooms" class="room-section">
         <h3>Мои комнаты</h3>
         <ul class="room-list">
             <?php while ($room = $my_rooms->fetch_assoc()): ?>
                 <li>
                     <?php echo htmlspecialchars($room['name']); ?>
                     <a href="chat.php?room_id=<?php echo $room['id']; ?>" class="btn">Войти</a>
-                    <a href="rooms.php?leave_room=<?php echo $room['id']; ?>" class="btn">Выйти</a> <!-- Кнопка выхода из комнаты -->
+                    <a href="rooms.php?leave_room=<?php echo $room['id']; ?>" class="btn">Выйти</a>
                 </li>
             <?php endwhile; ?>
         </ul>
     </div>
 
-    <div id="availableRooms" style="display: none;">
+    <div id="availableRooms" class="room-section" style="display: none;">
         <h3>Доступные комнаты</h3>
         <ul class="room-list">
             <?php while ($room = $available_rooms->fetch_assoc()): ?>
@@ -113,5 +114,6 @@ $available_rooms = $conn->query("SELECT id, name FROM rooms
         </ul>
     </div>
 </div>
+
 </body>
 </html>
