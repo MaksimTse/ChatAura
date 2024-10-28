@@ -1,0 +1,96 @@
+/* Общий стиль страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b2f;
+    color: #cfd8dc;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер */
+.container {
+    width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #2b2c3a;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Заголовки */
+h2, h3 {
+    text-align: center;
+    color: #8ab4f8;
+}
+
+/* Кнопки и формы */
+input[type="text"], input[type="password"], input[type="email"], button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button, .btn {
+    background-color: #4c5c7f;
+    color: #cfd8dc;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #3a4a66;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #3a4a66;
+    color: #cfd8dc;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.tab.active {
+    background-color: #586280;
+}
+
+/* Списки комнат и пользователей */
+.room-list, .user-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.room-list li, .user-list li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-list li:last-child, .user-list li:last-child {
+    border-bottom: none;
+}
+
+/* Ошибки и уведомления */
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+}
+
+.success-message {
+    color: #8ab4f8;
+    text-align: center;
+}
