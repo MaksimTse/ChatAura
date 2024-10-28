@@ -76,13 +76,15 @@ $available_rooms = $conn->query("SELECT id, name FROM rooms
             <button type="submit" class="btn">Выйти</button>
         </form>
     </div>
-
+    <hr>
     <h3>Создать комнату</h3>
     <form action="rooms.php" method="POST">
         <input type="text" name="room_name" placeholder="Название комнаты" required>
-        <button type="submit" class="btn">Создать</button>
+        <button type="submit" class="btn margin">Создать</button>
     </form>
-
+    <br>
+    <hr>
+    <br>
     <div class="tabs">
         <div id="tabMyRooms" class="tab active" onclick="showTab('myRooms')">Мои комнаты</div>
         <div id="tabAvailableRooms" class="tab" onclick="showTab('availableRooms')">Доступные комнаты</div>

@@ -122,20 +122,20 @@ while ($friend = $friends->fetch_assoc()) {
 <body>
 <div class="container">
     <h2>Редактировать профиль</h2>
-
+    <hr>
     <div class="section">
         <h3>Ваше имя пользователя: <?php echo htmlspecialchars($username); ?></h3>
         <form action="profile.php" method="POST">
             <input type="text" name="username" placeholder="Новое имя пользователя" required>
-            <button type="submit" name="update_profile" class="btn">Обновить профиль</button>
+            <button type="submit" name="update_profile" class="btn margin">Обновить профиль</button>
         </form>
     </div>
-
+    <hr>
     <div class="section">
         <h3>Поиск пользователей</h3>
         <form action="profile.php" method="POST">
             <input type="text" name="search_name" placeholder="Имя пользователя для поиска">
-            <button type="submit" name="search_user" class="btn">Найти</button>
+            <button type="submit" name="search_user" class="btn margin">Найти</button>
         </form>
 
         <?php if (!empty($search_results)): ?>
@@ -151,19 +151,25 @@ while ($friend = $friends->fetch_assoc()) {
         <?php endif; ?>
     </div>
 
+    <hr>
     <div class="section">
         <h3>Запросы в друзья</h3>
-        <ul class="user-list">
-            <?php while ($request = $friend_requests->fetch_assoc()): ?>
-                <li>
-                    <?php echo htmlspecialchars($request['username']); ?>
-                    <a href="profile.php?accept_friend=<?php echo $request['id']; ?>" class="btn">Принять</a>
-                    <a href="profile.php?decline_friend=<?php echo $request['id']; ?>" class="btn">Отклонить</a>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+        <?php if ($friend_requests->num_rows > 0): ?>
+            <ul class="user-list">
+                <?php while ($request = $friend_requests->fetch_assoc()): ?>
+                    <li>
+                        <?php echo htmlspecialchars($request['username']); ?>
+                        <a href="profile.php?accept_friend=<?php echo $request['id']; ?>" class="btn">Принять</a>
+                        <a href="profile.php?decline_friend=<?php echo $request['id']; ?>" class="btn">Отклонить</a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
+        <?php else: ?>
+            <div style="text-align: center; color: #b3b3b3; padding: 1rem;">пока что у вас нет запросов в друзья</div>
+        <?php endif; ?>
     </div>
 
+    <hr>
     <div class="section">
         <h3>Ваши друзья и их комнаты</h3>
         <ul class="user-list">

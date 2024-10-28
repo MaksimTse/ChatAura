@@ -1,96 +1,260 @@
-/* Общий стиль страницы */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1b1b2f;
-    color: #cfd8dc;
+/* Основные настройки стиля */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #eaeaea;
 }
 
-/* Контейнер */
-.container {
-    width: 600px;
-    margin: auto;
-    padding: 20px;
-    background-color: #2b2c3a;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Заголовки */
-h2, h3 {
-    text-align: center;
-    color: #8ab4f8;
-}
-
-/* Кнопки и формы */
-input[type="text"], input[type="password"], input[type="email"], button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-button, .btn {
-    background-color: #4c5c7f;
-    color: #cfd8dc;
-    cursor: pointer;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-button:hover, .btn:hover {
-    background-color: #3a4a66;
-}
-
-/* Вкладки */
-.tabs {
+body {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212;
+}
+
+/* Контейнер и основная структура */
+.container {
+    background-color: #1f1f1f;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Заголовок страницы */
+h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Стили формы */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+    color: #eaeaea;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #5a5aff;
+    background-color: #2b2b2b;
+}
+
+/* Кнопка отправки формы */
+.btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #5a5aff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #4545e8;
+}
+
+/* Ссылки */
+.link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.link a {
+    color: #5a5aff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link a:hover {
+    color: #4545e8;
+}
+
+/* Сообщения об ошибке */
+p {
+    margin-top: 1rem;
+    color: #ff6666;
+    font-size: 0.9rem;
+}
+
+/* Tabs для страниц Rooms */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
 }
 
 .tab {
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    background-color: #3a4a66;
-    color: #cfd8dc;
-    border-radius: 4px;
-    margin: 0 5px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .tab.active {
-    background-color: #586280;
+    background-color: #5a5aff;
+    color: #ffffff;
 }
 
 /* Списки комнат и пользователей */
-.room-list, .user-list {
-    list-style-type: none;
+.room-list,
+.user-list {
+    list-style: none;
     padding: 0;
+    margin-top: 1rem;
 }
 
-.room-list li, .user-list li {
-    padding: 10px;
-    border-bottom: 1px solid #444;
+.room-list li,
+.user-list li {
+    background-color: #333;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.room-list li:last-child, .user-list li:last-child {
-    border-bottom: none;
+.room-list li a,
+.user-list li a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
-/* Ошибки и уведомления */
-.error-message {
-    color: #ff6b6b;
-    text-align: center;
+/* Страница Profile */
+.section {
+    margin-bottom: 1.5rem;
 }
 
-.success-message {
-    color: #8ab4f8;
+.section h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Chat Page Styles */
+.chat-container {
+    background-color: #1f1f1f;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
     text-align: center;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    margin-bottom: 1rem;
+}
+
+.message {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.message.own {
+    background-color: #4a4aff;
+    align-self: flex-end;
+    color: #ffffff;
+}
+
+.message.other {
+    background-color: #3a3a3a;
+    align-self: flex-start;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+    color: #eaeaea;
+    margin-right: 0.5rem;
+}
+
+.chat-input button {
+    padding: 0.75rem 1rem;
+    background-color: #5a5aff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #4545e8;
+}
+
+.margin {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
